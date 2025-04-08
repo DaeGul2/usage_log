@@ -5,6 +5,7 @@ require('dotenv').config();
 // 로그인
 router.post('/login', (req, res) => {
   const { key } = req.body;
+  console.log("로그인 : ", key);  
 
   if (key === process.env.ADMIN_SECRET_KEY) {
     // 쿠키 설정
@@ -22,6 +23,7 @@ router.post('/login', (req, res) => {
 
 // 로그아웃
 router.post('/logout', (req, res) => {
+  console.log("로그아웃");
   res.clearCookie('admin_auth', { path: '/' });
   res.json({ status: 'logged_out' });
 });
