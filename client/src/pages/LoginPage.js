@@ -24,6 +24,7 @@ const LoginPage = ({ onLogin }) => {
           label="접속 키" 
           value={key} 
           onChange={e => setKey(e.target.value)} 
+          type="password" // ✅ 이 줄 추가
         />
         <Button 
           fullWidth 

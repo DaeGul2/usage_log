@@ -28,4 +28,13 @@ router.post('/logout', (req, res) => {
   res.json({ status: 'logged_out' });
 });
 
+// Check Auth 엔드포인트: 클라이언트로부터 호출되어 쿠키의 유효성을 확인합니다.
+router.get('/checkAuth', (req, res) => {
+  const token = req.cookies?.admin_auth;
+  if (token === process.env.ADMIN_SECRET_KEY) {
+    return res.json({ authenticated: true });
+  }
+  return res.json({ authenticated: false });
+});
+
 module.exports = router;
